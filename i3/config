@@ -36,9 +36,13 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id volumeicon
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id mate-power-manager
+# Wallpaper Directory
 exec --no-startup-id feh --bg-fill --randomize ~/.wallpapers/*
+# Starting the Compositor (config in ~/.config/i3/picom.conf)
 exec --no-startup-id picom -b --experimental-backends --dbus --config ~/.config/i3/picom.conf
+# Starting Polkit Agent
 exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)"
+# Enabling Numlock
 exec --no-startup-id numlockx on
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -56,7 +60,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+x exec $terminal
 
-# application shortcuts
+# application shortcuts (uses Default Applications stated above)
 bindsym $mod+b exec $browser
 bindsym $mod+c exec $editor
 bindsym $mod+e exec $files ~
@@ -66,10 +70,10 @@ bindsym $mod+q kill
 bindsym $alt+F4 kill
 
 # start dmenu (a program launcher)
-
 bindsym $mod+r exec --no-startup-id env LC_ALL=en_US.UTF-8 dmenu_run
 bindsym $alt+space exec --no-startup-id env LC_ALL=en_US.UTF-8 dmenu_run
 
+# Alternatively use Rofi
 bindsym $alt+Shift+space exec --no-startup-id rofi -show drun -theme sidebar  
 
 
@@ -163,8 +167,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-bindsym $mod+Escape+b exec 'btrinfo'
-
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
 # reload the configuration file
@@ -202,7 +204,9 @@ for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo
 
 # Start I3 Bar with Bumblebee status
 bar {
+        # Set Height
         height 26
+        # Peaceful Color Profile
         colors {
                 background #2f343f
                 statusline #2f343f
@@ -232,8 +236,6 @@ client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background           #2f343f
 
 # gaps inner|outer|horizontal|vertical|top|right|bottom|left current|all set|plus|minus|toggle <px>
-
-# Examples
 gaps inner 8
 gaps outer 1
 gaps horizontal 20
