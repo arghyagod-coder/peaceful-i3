@@ -219,7 +219,7 @@ bar {
                 urgent_workspacei       #2f343f #ebcb8b #2f343f
         }
 		position top
-       status_command /usr/bin/bumblebee-status -m cpu memory spacer nic arch_update spacer battery datetime hostname   \
+       status_command ~/.local/bin/bumblebee-status -m cpu memory spacer nic arch_update spacer battery datetime hostname   \
 		\
 		 -p time.format="%H:%M"\
                  -p spacer.text=""\
